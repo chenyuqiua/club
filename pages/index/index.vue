@@ -1,5 +1,24 @@
 <template>
 	<view class="uni-padding-wrap">
+		<!-- search -->
+		<view class="cu-bar bg-white search" :style="[{top:CustomBar + 'px'}]">
+			<picker v-if="queryList.length>1" mode="selector" :range="queryList" range-key="queryName"
+				:value="queryIndex" @change="queryChange" style="padding-left: 20upx;">
+				<view>
+					<image style="width: 20upx;height: 33upx;" src="../../static/center/to.png"></image>
+				</view>
+			</picker>
+			<view v-if="queryIndex==0" class="search-form round">
+				<text class="cuIcon-search"></text>
+				<input v-model="searchForm.remenshetuanshetuanmingcheng" type="text" placeholder="请输入社团名称"></input>
+			</view>
+			<view v-if="queryIndex==0" class="action">
+				<button @tap="onPageTap('remenshetuan')"
+					:style="{width:'auto',borderRadius:'8px',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:'#5741f5',borderColor:'#5741f5'}"
+					class="cu-btn shadow-blur round">搜索</button>
+			</view>
+		</view>
+		<!-- swiper -->
 		<view class="header">
 			<view class="headerb">
 				<swiper
@@ -21,26 +40,10 @@
 			</view>
 		</view>
 
-		<view class="cu-bar bg-white search" :style="[{top:CustomBar + 'px'}]">
-			<picker v-if="queryList.length>1" mode="selector" :range="queryList" range-key="queryName"
-				:value="queryIndex" @change="queryChange" style="padding-left: 20upx;">
-				<view>
-					<image style="width: 20upx;height: 33upx;" src="../../static/center/to.png"></image>
-				</view>
-			</picker>
-			<view v-if="queryIndex==0" class="search-form round">
-				<text class="cuIcon-search"></text>
-				<input v-model="searchForm.remenshetuanshetuanmingcheng" type="text" placeholder="请输入社团名称"></input>
-			</view>
-			<view v-if="queryIndex==0" class="action">
-				<button @tap="onPageTap('remenshetuan')"
-					:style="{width:'auto',borderRadius:'8px',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:'#5741f5',borderColor:'#5741f5'}"
-					class="cu-btn shadow-blur round">搜索</button>
-			</view>
-		</view>
+		
 		<!-- menu -->
 		<view v-if="true" class="menu" style="display: flex;flex-wrap: wrap;"
-			:style='{"padding":"0 8rpx","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+			:style='{"padding":"20rpx 8rpx","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 			<block v-for="item in menuList" v-bind:key="item.roleName">
 				<block v-if="role==item.roleName" v-bind:key="index" v-for=" (menu,index) in item.frontMenu">
 					<block v-bind:key="sort" v-for=" (child,sort) in menu.child">
@@ -50,7 +53,6 @@
 								class="menu-list"
 								v-if="button=='查看' && child.tableName!='yifahuodingdan' && child.tableName!='yituikuandingdan' &&child.tableName!='yiquxiaodingdan' && child.tableName!='weizhifudingdan' && child.tableName!='yizhifudingdan' && child.tableName!='yiwanchengdingdan' "
 								@tap="onPageTap2('../'+child.tableName+'/list')">
-								<!-- <image style="display: block;" :style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0px auto","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"20rpx","color":"#333","borderWidth":"0","width":"80rpx","fontSize":"64rpx","borderStyle":"solid","height":"80rpx"}' mode="aspectFill" src="http://codegen.caihongy.cn/20201114/7856ba26477849ea828f481fa2773a95.jpg"></image> -->
 								<view class="iconarr" :class="child.appFrontIcon"
 									:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0px auto","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"20rpx","color":"#333","borderWidth":"0","width":"80rpx","fontSize":"64rpx","borderStyle":"solid","height":"80rpx"}'>
 								</view>
@@ -63,7 +65,6 @@
 				</block>
 			</block>
 		</view>
-
 		<!-- menu -->
 
 		<!-- 社团推荐 -->
@@ -75,14 +76,14 @@
         <view class="box box3"></view>
 			</view>
 			<view class="title"
-				:style='{"padding":"0rpx","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"-130rpx 0 50rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 186, 189, 0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto","border-bottom": "2rpx solid #ccc"}'>
+				:style='{"padding":"0 20rpx","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"-130rpx 0 50rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 186, 189, 0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto","border-bottom": "2rpx solid #ccc"}'>
 				<view class="news-title">
-					热门社团推荐
+					社团推荐
 				</view>
 			</view>
 			<!-- 样式1 -->
 			<view v-if="1 == 1" class="list-box style1"
-				:style='{"padding":"5px","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"-20px 0px 20px 0px ","borderColor":"rgba(0,0,0,0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+				:style='{"padding":"20rpx","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"-20px 0px 20px 0px ","borderColor":"rgba(0,0,0,0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 				<view @tap="onDetailTap('remenshetuan',product.id)" v-for="(product,index) in remenshetuanlist"
 					:key="index" class="list-item"
 					:style='{"padding":"0","boxShadow":"0 0px 0px rgba(0,0,0,.3)","margin":"0 0 20rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"20rpx","borderWidth":"0","width":"48%","borderStyle":"solid","height":"auto"}'>
@@ -108,7 +109,7 @@
 		<!-- 社团推荐 -->
 
 		<!-- 社团公告 -->
-		<view class="listBox news" :style='{"padding":"20rpx 10rpx","boxShadow":"0px 6rpx 12rpx rgba(229, 231, 253, 0.16)","margin":"30rpx 0","borderColor":"red","backgroundColor":"rgba(229, 231, 253,1)","borderRadius":"40rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+		<view class="listBox news" :style='{"padding":"20rpx","boxShadow":"0px 6rpx 12rpx rgba(229, 231, 253, 0.16)","margin":"30rpx 0","borderColor":"red","backgroundColor":"rgba(229, 231, 253,1)","borderRadius":"40rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 			<view class="title" :style='{"border-bottom": "2rpx solid #ccc"}'>
 				<view class="news-title">社团公告</view>
 				<text class="news-title" :style='{"fontSize":"16px","position": "absolute","right": "0px","lineHeight": "28px"}'
@@ -154,7 +155,7 @@
 		<!-- 社团公告 -->
 
 		<!-- 社团活动 -->
-		<view class="listBox list" :style='{"padding":"20rpx 10rpx","boxShadow":"0px 6rpx 12rpx rgba(229, 231, 253, 0.16)","margin":"30rpx 0","borderColor":"red","backgroundColor":"rgba(229, 231, 253,1)","borderRadius":"40rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+		<view class="listBox list" :style='{"padding":"20rpx","boxShadow":"0px 6rpx 12rpx rgba(229, 231, 253, 0.16)","margin":"30rpx 0","borderColor":"red","backgroundColor":"rgba(229, 231, 253,1)","borderRadius":"40rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 			<view v-if="false && 1 == 1" class="idea listIdea"
 				:style='{"padding":"20rpx 10rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"#ccc","borderRadius":"0","borderWidth":"0","background":"rgba(0,0,0,.3)","width":"100%","borderStyle":"solid","height":"auto"}'>
 				<view class="box box1"></view>
@@ -167,7 +168,7 @@
 				<text class="news-title" :style='{"fontSize":"16px","position": "absolute","right": "0px","lineHeight": "28px"}' @tap="onPageTap('shetuanhuodong')">查看更多</text>
 			</view>
 			<view v-if="false && 1 == 2" class="idea listIdea"
-				:style='{"padding":"20rpx 10rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"#ccc","borderRadius":"0","borderWidth":"0","background":"rgba(0,0,0,.3)","width":"100%","borderStyle":"solid","height":"auto"}'>
+				:style='{"padding":"20rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"#ccc","borderRadius":"0","borderWidth":"0","background":"rgba(0,0,0,.3)","width":"100%","borderStyle":"solid","height":"auto"}'>
 				<view class="box box1"></view>
 				<view class="box box2"></view>
 				<view class="box box3"></view>
@@ -184,7 +185,7 @@
 						class="list-item-image" mode="aspectFill"
 						:src="product.huodongtupian?baseUrl+product.huodongtupian.split(',')[0]:''"></image>
 					<view class="list-item-body"
-						:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"calc(100% - 200rpx)","borderStyle":"solid","height":"auto"}'>
+						:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"20rpx","borderWidth":"0","width":"calc(100% - 200rpx)","borderStyle":"solid","height":"auto"}'>
 						<view
 							:style='{"padding":"0 20rpx","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0 auto","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"rgba(0, 0, 0, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"68rpx","fontSize":"32rpx","borderStyle":"solid"}'
 							class="list-item-title">{{product.huodongbiaoti}}</view>

@@ -1,38 +1,60 @@
 <template>
 	<view class="content">
-		<view @tap="onPageTap('../user-info/user-info')" class="header" v-bind:class="{'status':isH5Plus}" :style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 186, 189, 0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"260rpx"}'>
-
-			<view :style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 0, 0, 0)","borderRadius":"16rpx","borderWidth":"0","width":"calc(100% - 112rpx)","borderStyle":"solid","height":"160rpx"}'v-if="tableName=='xuesheng'" class="userinfo">
+		<!-- user -->
+		<view @tap="onPageTap('../user-info/user-info')" class="header" v-bind:class="{'status':isH5Plus}"
+			:style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 186, 189, 0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"260rpx"}'>
+			<view
+				:style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 0, 0, 0)","borderRadius":"16rpx","borderWidth":"0","width":"calc(100% - 112rpx)","borderStyle":"solid","height":"160rpx"}'
+				v-if="tableName=='xuesheng'" class="userinfo">
 				<view class="info">
-					<view class="username" :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(255,255,255,0)","margin":"6rpx 0","backgroundColor":"rgba(0,0,0,0)","borderColor":"rgba(255,255,255,.3)","color":"#fff","textAlign":"left","borderRadius":"8rpx","borderWidth":"0","width":"auto","lineHeight":"36rpx","fontSize":"24rpx","borderStyle":"solid"}'>{{user.xuehao}}<text v-if="user.vip&& user.vip=='是'">(VIP)</text></view>
+					<view class="username"
+						:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(255,255,255,0)","margin":"6rpx 0","backgroundColor":"rgba(0,0,0,0)","borderColor":"rgba(255,255,255,.3)","color":"#fff","textAlign":"left","borderRadius":"8rpx","borderWidth":"0","width":"auto","lineHeight":"36rpx","fontSize":"24rpx","borderStyle":"solid"}'>
+						{{user.xuehao}}<text v-if="user.vip&& user.vip=='是'">(VIP)</text></view>
 				</view>
 			</view>
-			<view :style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 0, 0, 0)","borderRadius":"16rpx","borderWidth":"0","width":"calc(100% - 112rpx)","borderStyle":"solid","height":"160rpx"}'v-if="tableName=='shezhang'" class="userinfo">
+			<view
+				:style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 0, 0, 0)","borderRadius":"16rpx","borderWidth":"0","width":"calc(100% - 112rpx)","borderStyle":"solid","height":"160rpx"}'
+				v-if="tableName=='shezhang'" class="userinfo">
 				<view class="info">
-					<view class="username" :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(255,255,255,0)","margin":"6rpx 0","backgroundColor":"rgba(0,0,0,0)","borderColor":"rgba(255,255,255,.3)","color":"#fff","textAlign":"left","borderRadius":"8rpx","borderWidth":"0","width":"auto","lineHeight":"36rpx","fontSize":"24rpx","borderStyle":"solid"}'>{{user.shezhangzhanghao}}<text v-if="user.vip&& user.vip=='是'">(VIP)</text></view>
+					<view class="username"
+						:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(255,255,255,0)","margin":"6rpx 0","backgroundColor":"rgba(0,0,0,0)","borderColor":"rgba(255,255,255,.3)","color":"#fff","textAlign":"left","borderRadius":"8rpx","borderWidth":"0","width":"auto","lineHeight":"36rpx","fontSize":"24rpx","borderStyle":"solid"}'>
+						{{user.shezhangzhanghao}}<text v-if="user.vip&& user.vip=='是'">(VIP)</text></view>
 				</view>
 			</view>
 			<view class="setting">
-				<!-- <image src="/static/center/setting.png"></image> -->
-				<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0 0 0 80rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"0","color":"#fff","borderWidth":"0","width":"32rpx","lineHeight":"32rpx","fontSize":"32rpx","borderStyle":"solid"}' class="cuIcon-settings"></view>
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0 0 0 80rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"0","color":"#fff","borderWidth":"0","width":"32rpx","lineHeight":"32rpx","fontSize":"32rpx","borderStyle":"solid"}'
+					class="cuIcon-settings"></view>
 			</view>
 		</view>
-		<view class="list" :style='{"padding":"0 24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"24rpx 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 
-			<block v-for="item in menuList" v-bind:key="item.roleName">
-				<block v-if="role==item.roleName" v-bind:key="index" v-for=" (menu,index) in item.backMenu">
-					<block v-bind:key="sort" v-for=" (child,sort) in menu.child">
-						<view :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","backgroundColor":"#fff","borderColor":"rgba(216, 216, 216, 1)","borderRadius":"0","borderWidth":"0 0 2rpx","width":"100%","borderStyle":"solid","height":"80rpx"}' v-if="child.tableName!='yifahuodingdan' && child.tableName!='yituikuandingdan' &&child.tableName!='yiquxiaodingdan' && child.tableName!='weizhifudingdan' && child.tableName!='yizhifudingdan' && child.tableName!='yiwanchengdingdan' " @tap="onPageTap('../'+child.tableName+'/list?userid='+user.id)" class="li" hover-class="hover">
-							<view v-if="true" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","color":"rgba(246, 185, 63, 1)","isShow":true,"borderRadius":"0","borderWidth":"0","width":"30rpx","lineHeight":"30rpx","fontSize":"30rpx","borderStyle":"solid"}' :class="child.appFrontIcon"></view>
-							<view :style='{"padding":"0 20rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 92rpx)","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="text">{{child.menu}}</view>
-							<!-- <image :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","color":"rgba(161, 161, 161, 1)","isShow":true,"borderRadius":"0","borderWidth":"0","width":"28rpx","lineHeight":"28rpx","fontSize":"28rpx","borderStyle":"solid"}' class="to" src="/static/center/to.png"></image> -->
-							<view v-if="true" class="cuIcon-right" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","color":"rgba(161, 161, 161, 1)","isShow":true,"borderRadius":"0","borderWidth":"0","width":"28rpx","lineHeight":"28rpx","fontSize":"28rpx","borderStyle":"solid"}'></view>
-						</view>
+		<!-- menu -->
+		<view class="cover-list">
+			<view class="list"
+				:style='{"padding":"0 24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","borderColor":"#7d79f4","backgroundColor":"#fff","borderRadius":"16rpx","borderWidth":"2rpx","width":"100%","borderStyle":"solid","height":"auto"}'>
+				<block v-for="item in menuList" v-bind:key="item.roleName">
+					<block v-if="role==item.roleName" v-bind:key="index" v-for=" (menu,index) in item.backMenu">
+						<block v-bind:key="sort" v-for=" (child,sort) in menu.child">
+							<view
+								:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","backgroundColor":"#fff","borderColor":"rgba(216, 216, 216, 1)","borderRadius":"0","borderWidth":"0 0 2rpx","width":"100%","borderStyle":"solid","height":"80rpx"}'
+								v-if="child.tableName!='yifahuodingdan' && child.tableName!='yituikuandingdan' &&child.tableName!='yiquxiaodingdan' && child.tableName!='weizhifudingdan' && child.tableName!='yizhifudingdan' && child.tableName!='yiwanchengdingdan' "
+								@tap="onPageTap('../'+child.tableName+'/list?userid='+user.id)" class="li"
+								hover-class="hover">
+								<view v-if="true"
+									:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","color":"rgba(123, 120, 244, 1)","isShow":true,"borderRadius":"0","borderWidth":"0","width":"30rpx","lineHeight":"30rpx","fontSize":"30rpx","borderStyle":"solid"}'
+									:class="child.appFrontIcon"></view>
+								<view
+									:style='{"padding":"0 20rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 92rpx)","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'
+									class="text">{{child.menu}}</view>
+								<!-- <image :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","color":"rgba(161, 161, 161, 1)","isShow":true,"borderRadius":"0","borderWidth":"0","width":"28rpx","lineHeight":"28rpx","fontSize":"28rpx","borderStyle":"solid"}' class="to" src="/static/center/to.png"></image> -->
+								<view v-if="true" class="cuIcon-right"
+									:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","color":"rgba(161, 161, 161, 1)","isShow":true,"borderRadius":"0","borderWidth":"0","width":"28rpx","lineHeight":"28rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+								</view>
+							</view>
+						</block>
 					</block>
 				</block>
-			</block>
-
-
+			</view>
 		</view>
 	</view>
 </template>
@@ -43,42 +65,42 @@
 			return {
 				isH5Plus: true,
 				user: {},
-				tableName:'',
+				tableName: '',
 				role: '',
 				menuList: [],
-        iconArr: [
-          'cuIcon-same',
-          'cuIcon-deliver',
-          'cuIcon-evaluate',
-          'cuIcon-shop',
-          'cuIcon-ticket',
-          'cuIcon-cascades',
-          'cuIcon-discover',
-          'cuIcon-question',
-          'cuIcon-pic',
-          'cuIcon-filter',
-          'cuIcon-footprint',
-          'cuIcon-pulldown',
-          'cuIcon-pullup',
-          'cuIcon-moreandroid',
-          'cuIcon-refund',
-          'cuIcon-qrcode',
-          'cuIcon-remind',
-          'cuIcon-profile',
-          'cuIcon-home',
-          'cuIcon-message',
-          'cuIcon-link',
-          'cuIcon-lock',
-          'cuIcon-unlock',
-          'cuIcon-vip',
-          'cuIcon-weibo',
-          'cuIcon-activity',
-          'cuIcon-friendadd',
-          'cuIcon-friendfamous',
-          'cuIcon-friend',
-          'cuIcon-goods',
-          'cuIcon-selection'
-        ],
+				iconArr: [
+					'cuIcon-same',
+					'cuIcon-deliver',
+					'cuIcon-evaluate',
+					'cuIcon-shop',
+					'cuIcon-ticket',
+					'cuIcon-cascades',
+					'cuIcon-discover',
+					'cuIcon-question',
+					'cuIcon-pic',
+					'cuIcon-filter',
+					'cuIcon-footprint',
+					'cuIcon-pulldown',
+					'cuIcon-pullup',
+					'cuIcon-moreandroid',
+					'cuIcon-refund',
+					'cuIcon-qrcode',
+					'cuIcon-remind',
+					'cuIcon-profile',
+					'cuIcon-home',
+					'cuIcon-message',
+					'cuIcon-link',
+					'cuIcon-lock',
+					'cuIcon-unlock',
+					'cuIcon-vip',
+					'cuIcon-weibo',
+					'cuIcon-activity',
+					'cuIcon-friendadd',
+					'cuIcon-friendfamous',
+					'cuIcon-friend',
+					'cuIcon-goods',
+					'cuIcon-selection'
+				],
 			};
 		},
 		computed: {
@@ -86,7 +108,7 @@
 				return this.$base.url;
 			}
 		},
-		async onLoad(){
+		async onLoad() {
 			this.role = uni.getStorageSync("role");
 			let table = uni.getStorageSync("nowTable");
 			let res = await this.$api.session(table);
@@ -95,8 +117,8 @@
 			let menus = menu.list();
 			this.menuList = menus;
 		},
-		async onShow(){
-            uni.removeStorageSync("useridTag");
+		async onShow() {
+			uni.removeStorageSync("useridTag");
 			this.role = uni.getStorageSync("role");
 			let table = uni.getStorageSync("nowTable");
 			let res = await this.$api.session(table);
@@ -107,7 +129,7 @@
 		},
 		methods: {
 			onPageTap(url) {
-                uni.setStorageSync("useridTag",1);
+				uni.setStorageSync("useridTag", 1);
 				uni.navigateTo({
 					url: url,
 					fail: function() {
@@ -124,6 +146,8 @@
 <style lang="scss">
 	page {
 		background-color: #fff;
+		// background-color: #7d79f4;
+		// height: 100vh;
 	}
 
 	.content:after {
@@ -323,5 +347,11 @@
 				height: 40upx
 			}
 		}
+	}
+
+	.cover-list {
+		padding: 24rpx;
+		margin: 30rpx 0;
+		background-color: #e5e7fd;
 	}
 </style>

@@ -110,7 +110,7 @@
 		<!-- 社团公告 -->
 		<view class="listBox news" :style='{"padding":"20rpx 10rpx","boxShadow":"0px 6rpx 12rpx rgba(229, 231, 253, 0.16)","margin":"30rpx 0","borderColor":"red","backgroundColor":"rgba(229, 231, 253,1)","borderRadius":"40rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 			<view class="title" :style='{"border-bottom": "2rpx solid #ccc"}'>
-				<view class="news-title"> 社团公告</view>
+				<view class="news-title">社团公告</view>
 				<text class="news-title" :style='{"fontSize":"16px","position": "absolute","right": "0px","lineHeight": "28px"}'
 					@tap="onPageTap('news')">查看更多</text>
 			</view>

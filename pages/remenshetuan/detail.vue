@@ -1,92 +1,165 @@
 <template>
-	<mescroll-uni @init="mescrollInit" :up="upOption" :down="downOption" @down="downCallback" @up="upCallback" :bottom="100">
+	<mescroll-uni @init="mescrollInit" :up="upOption" :down="downOption" @down="downCallback" @up="upCallback"
+		:bottom="100">
 		<view class="container">
-            <swiper :style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"20rpx 3%","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"0","borderWidth":"0","width":"94%","borderStyle":"solid","height":"300rpx"}' class="swiper" :indicator-dots='".swiper-pagination"==null?false:true' :autoplay='autoplaySwiper' :circular='true' indicator-active-color='rgba(173, 219, 140, 1)' indicator-color='rgba(0, 0, 0, .3)' :duration='1000' :interval='intervalSwiper' :vertical='"horizontal"=="horizontal"?false:true'>
-      	<swiper-item :style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"300rpx"}' v-for="(swiper,index) in swiperList" :key="index">
-      		<image :style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"300rpx"}' mode="aspectFill" :src="baseUrl+swiper"></image>
-      	</swiper-item>
-      </swiper>
-                              <view class="detail-content">
+			<swiper
+				:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"20rpx 3%","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"0","borderWidth":"0","width":"94%","borderStyle":"solid","height":"300rpx"}'
+				class="swiper" :indicator-dots='".swiper-pagination"==null?false:true' :autoplay='autoplaySwiper'
+				:circular='true' indicator-active-color='rgba(173, 219, 140, 1)' indicator-color='rgba(0, 0, 0, .3)'
+				:duration='1000' :interval='intervalSwiper' :vertical='"horizontal"=="horizontal"?false:true'>
+				<swiper-item
+					:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"300rpx"}'
+					v-for="(swiper,index) in swiperList" :key="index">
+					<image
+						:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"300rpx"}'
+						mode="aspectFill" :src="baseUrl+swiper"></image>
+				</swiper-item>
+			</swiper>
+			<view class="detail-content">
 
-			<view class="price detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-				<view class="text icon" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0 0 0 -40rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(165, 0, 0, 1)","color":"rgba(255, 255, 255, 1)","textAlign":"center","borderRadius":"40rpx 0 0 40rpx","borderWidth":"0","width":"20%","lineHeight":"50rpx","fontSize":"32rpx","borderStyle":"solid"}'>
-					<view style="line-height: 1;" v-if="storeupFlag==1" class="cuIcon-favorfill" @click="shoucang"></view>
-					<view style="line-height: 1;" v-if="storeupFlag==0" class="cuIcon-favor" @click="shoucang"></view>
+				<view class="price detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="text icon"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0 0 0 -40rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(165, 0, 0, 1)","color":"rgba(255, 255, 255, 1)","textAlign":"center","borderRadius":"40rpx 0 0 40rpx","borderWidth":"0","width":"20%","lineHeight":"50rpx","fontSize":"32rpx","borderStyle":"solid"}'>
+						<view style="line-height: 1;" v-if="storeupFlag==1" class="cuIcon-favorfill" @click="shoucang">
+						</view>
+						<view style="line-height: 1;" v-if="storeupFlag==0" class="cuIcon-favor" @click="shoucang">
+						</view>
+					</view>
 				</view>
-			</view>
 
-                <view class="name shop-title" :style='{"padding":"0 24rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#fff","backgroundColor":"#fff","color":"#000","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"60rpx","fontSize":"36rpx","borderStyle":"solid"}'>
+				<view class="name shop-title"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#fff","backgroundColor":"#fff","color":"#000","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"60rpx","fontSize":"36rpx","borderStyle":"solid"}'>
 					社团名称：{{detail.shetuanmingcheng}}
 				</view>
 
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>社团类别：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.shetuanleibie}}</view>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="lable"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+						社团类别：</view>
+					<view class="text"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>
+						{{detail.shetuanleibie}}</view>
 				</view>
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>社团人数：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.shetuanrenshu}}</view>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="lable"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+						社团人数：</view>
+					<view class="text"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>
+						{{detail.shetuanrenshu}}</view>
 				</view>
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>成立时间：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.chenglishijian}}</view>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="lable"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+						成立时间：</view>
+					<view class="text"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>
+						{{detail.chenglishijian}}</view>
 				</view>
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>社团地址：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.shetuandizhi}}</view>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="lable"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+						社团地址：</view>
+					<view class="text"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>
+						{{detail.shetuandizhi}}</view>
 				</view>
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>社长账号：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.shezhangzhanghao}}</view>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="lable"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+						社长账号：</view>
+					<view class="text"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>
+						{{detail.shezhangzhanghao}}</view>
 				</view>
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>社长姓名：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.shezhangxingming}}</view>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="lable"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+						社长姓名：</view>
+					<view class="text"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>
+						{{detail.shezhangxingming}}</view>
 				</view>
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>点击次数：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.clicknum}}</view>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="lable"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+						点击次数：</view>
+					<view class="text"
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>
+						{{detail.clicknum}}</view>
 				</view>
 
 			</view>
 
-            <view class="time-content" :style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0 0 10rpx 0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}' style="height:auto !important;">
-				<view class="header" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+			<view class="time-content"
+				:style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0 0 10rpx 0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
+				style="height:auto !important;">
+				<view class="header"
+					:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
 					社团宗旨
 				</view>
-				<view class="content" :style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#fff","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto"}'>
+				<view class="content"
+					:style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#fff","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto"}'>
 					{{detail.shetuanzongzhi}}
 				</view>
 			</view>
 
-            <view class="time-content" :style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0 0 10rpx 0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}' style="height:auto !important;">
-				<view class="header" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+			<view class="time-content"
+				:style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0 0 10rpx 0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
+				style="height:auto !important;">
+				<view class="header"
+					:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
 					社团风采
 				</view>
-				<view class="content" :style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#fff","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto"}'>
-					<rich-text style="font-size: 33upx;line-height: 50upx;letter-spacing: 5upx;" :nodes="detail.shetuanfengcai"></rich-text>
+				<view class="content"
+					:style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#fff","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto"}'>
+					<rich-text style="font-size: 33upx;line-height: 50upx;letter-spacing: 5upx;"
+						:nodes="detail.shetuanfengcai"></rich-text>
 				</view>
 			</view>
 
-			<view class="time-content" :style='{"padding":"24rpx","boxShadow":"0 0 4rpx rgba(0,0,0,0)","margin":"0 0 20rpx 0","borderColor":"red","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-				<view class="comoment-header" :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,.2)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0 0 2rpx 0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+			<view class="time-content"
+				:style='{"padding":"24rpx","boxShadow":"0 0 4rpx rgba(0,0,0,0)","margin":"0 0 20rpx 0","borderColor":"red","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+				<view class="comoment-header"
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,.2)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0 0 2rpx 0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
 						评论
 					</view>
-					<view :style='{"padding":"0 10rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(64, 174, 54, 1)","backgroundColor":"rgba(173, 219, 140, 1)","color":"#333","isBtn":true,"borderRadius":"10rpx","borderWidth":"2rpx","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"dashed "}' @click="onCommentTap" class="btn-comment-content" style="display: flex;align-items: center;">
+					<view
+						:style='{"padding":"0 10rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(64, 174, 54, 1)","backgroundColor":"rgba(173, 219, 140, 1)","color":"#333","isBtn":true,"borderRadius":"10rpx","borderWidth":"2rpx","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"dashed "}'
+						@click="onCommentTap" class="btn-comment-content" style="display: flex;align-items: center;">
 						<view class="cuIcon-add"></view>添加评论
 					</view>
 				</view>
 
 				<view class="cu-list comment" style="margin-top: 20upx;">
-					<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,.2)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0 0 2rpx 0","width":"100%","borderStyle":"dashed","height":"auto"}' v-for="(item,index) in commentList" v-bind:key="index" class="cu-item comment-item">
+					<view
+						:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,.2)","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0 0 2rpx 0","width":"100%","borderStyle":"dashed","height":"auto"}'
+						v-for="(item,index) in commentList" v-bind:key="index" class="cu-item comment-item">
 						<view class="content">
-							<view :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(0, 0, 0, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="text-grey">{{item.nickname}}</view>
-							<view :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(164, 164, 164, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"32rpx","fontSize":"24rpx","borderStyle":"solid"}' class="text-gray text-content text-df content">
+							<view
+								:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(0, 0, 0, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'
+								class="text-grey">{{item.nickname}}</view>
+							<view
+								:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(164, 164, 164, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"32rpx","fontSize":"24rpx","borderStyle":"solid"}'
+								class="text-gray text-content text-df content">
 								{{item.content}}
 							</view>
-							<view :style='{"padding":"14rpx 0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(164, 164, 164, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"auto","fontSize":"24rpx","borderStyle":"solid"}' class="margin-top-sm text-gray text-df">{{item.addtime}}</view>
-							<view v-if="item.reply" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(164, 164, 164, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"32rpx","fontSize":"24rpx","borderStyle":"solid"}' class="text-gray text-content text-df content">
+							<view
+								:style='{"padding":"14rpx 0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(164, 164, 164, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"auto","fontSize":"24rpx","borderStyle":"solid"}'
+								class="margin-top-sm text-gray text-df">{{item.addtime}}</view>
+							<view v-if="item.reply"
+								:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(164, 164, 164, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"32rpx","fontSize":"24rpx","borderStyle":"solid"}'
+								class="text-gray text-content text-df content">
 								回复:{{item.reply}}
 							</view>
 						</view>
@@ -96,13 +169,19 @@
 
 			</view>
 
-			<view class="bottom-content cu-bar bg-white tabbar border shop" :style='{"padding":"0px","boxShadow":"rgb(0 0 0 / 0%) 0px 0px 12rpx","margin":"0px","borderColor":"rgb(204, 204, 204)","backgroundColor":"rgb(255, 255, 255)","borderRadius":"0px","borderWidth":"2rpx 0 0 0","width":"100%","borderStyle":"solid","height":"100rpx"}'>
+			<view class="bottom-content cu-bar bg-white tabbar border shop"
+				:style='{"padding":"0px","boxShadow":"rgb(0 0 0 / 0%) 0px 0px 12rpx","margin":"0px","borderColor":"rgb(204, 204, 204)","backgroundColor":"rgb(255, 255, 255)","borderRadius":"0px","borderWidth":"2rpx 0 0 0","width":"100%","borderStyle":"solid","height":"100rpx"}'>
 				<view style="text-align: left;display: flex;">
 				</view>
 				<view style="text-align: right;">
-					<button v-if="userid&&isAuth('remenshetuan','申请加入')" @tap="onAcrossTap('shetuanjiaru','','','')" class="cu-btn bg-brown round shadow-blur" style="margin-right: 10upx;min-width: 180upx;" :style="{width:'auto',borderRadius:'8rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0+6],borderColor:btnColor[0+6]}">申请加入</button>
-					<button v-if="!userid&&isAuthFront('remenshetuan','申请加入')" @tap="onAcrossTap('shetuanjiaru','','','')" class="cu-btn bg-brown round shadow-blur" style="margin-right: 10upx;min-width: 180upx;" :style="{width:'auto',borderRadius:'8rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0+6],borderColor:btnColor[0+6]}">申请加入</button>
-                </view>
+					<button v-if="userid&&isAuth('remenshetuan','申请加入')" @tap="onAcrossTap('shetuanjiaru','','','')"
+						class="cu-btn bg-brown round shadow-blur" style="margin-right: 10upx;min-width: 180upx;"
+						:style="{width:'auto',borderRadius:'8rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0+6],borderColor:btnColor[0+6]}">申请加入</button>
+					<button v-if="!userid&&isAuthFront('remenshetuan','申请加入')"
+						@tap="onAcrossTap('shetuanjiaru','','','')" class="cu-btn bg-brown round shadow-blur"
+						style="margin-right: 10upx;min-width: 180upx;"
+						:style="{width:'auto',borderRadius:'8rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0+6],borderColor:btnColor[0+6]}">申请加入</button>
+				</view>
 			</view>
 		</view>
 
@@ -133,11 +212,17 @@
 	export default {
 		data() {
 			return {
-				autoplaySwiper: {"delay":5000,"disableOnInteraction":false} ? true : false,
-				intervalSwiper: {"delay":5000,"disableOnInteraction":false} ? 5000 : 5000,
-				btnColor: ['#409eff','#67c23a','#909399','#e6a23c','#f56c6c','#356c6c','#351c6c','#f093a9','#a7c23a','#104eff','#10441f','#a21233','#503319'],
+				autoplaySwiper: {
+					"delay": 5000,
+					"disableOnInteraction": false
+				} ? true : false,
+				intervalSwiper: {
+					"delay": 5000,
+					"disableOnInteraction": false
+				} ? 5000 : 5000,
+				btnColor: ['#5741f5'],
 				id: '',
-                userid: '',
+				userid: '',
 				detail: {},
 				swiperList: [],
 				commentList: [],
@@ -152,7 +237,7 @@
 				hasNext: true,
 				user: {},
 				sfshIndex: -1,
-				sfshOptions: ['通过','不通过'],
+				sfshOptions: ['通过', '不通过'],
 				storeupFlag: 0,
 				count: 0,
 				timer: null
@@ -221,9 +306,9 @@
 		},
 		async onLoad(options) {
 			this.id = options.id;
-            if(options.userid) {
-                this.userid = options.userid;
-            }
+			if (options.userid) {
+				this.userid = options.userid;
+			}
 		},
 		async onShow(options) {
 			// 渲染数据
@@ -232,12 +317,12 @@
 			// 获取用户信息
 			let res = await this.$api.session(table);
 			this.user = res.data;
-			this.btnColor = this.btnColor.sort(()=> {
-				return (0.5-Math.random());
+			this.btnColor = this.btnColor.sort(() => {
+				return (0.5 - Math.random());
 			});
 			this.getStoreup();
 			let cleanType = uni.getStorageSync('discussremenshetuanCleanType')
-			if(cleanType){
+			if (cleanType) {
 				uni.removeStorageSync('discussremenshetuanCleanType')
 				this.mescroll.num = 1
 				this.upCallback(this.mescroll)
@@ -248,9 +333,9 @@
 		},
 		methods: {
 			// 支付
-			onPayTap(){
-				uni.setStorageSync('paytable','remenshetuan');
-				uni.setStorageSync('payObject',this.detail);
+			onPayTap() {
+				uni.setStorageSync('paytable', 'remenshetuan');
+				uni.setStorageSync('payObject', this.detail);
 				this.$utils.jump('../pay-confirm/pay-confirm?type=1')
 			},
 			// 收藏
@@ -258,21 +343,21 @@
 				let params = {
 					page: 1,
 					limit: 1,
-					refid : this.id,
-					tablename : 'remenshetuan',
+					refid: this.id,
+					tablename: 'remenshetuan',
 					userid: this.user.id,
 					type: 1,
 				}
 				let res = await this.$api.list(`storeup`, params);
 				this.storeupFlag = res.data.list.length;
 			},
-			async shoucang(){
+			async shoucang() {
 				let _this = this;
 				let params = {
 					page: 1,
 					limit: 1,
-					refid : _this.detail.id,
-					tablename : 'remenshetuan',
+					refid: _this.detail.id,
+					tablename: 'remenshetuan',
 					userid: _this.user.id,
 					type: 1,
 				}
@@ -300,7 +385,7 @@
 							await _this.$api.add('storeup', {
 								userid: _this.user.id,
 								name: _this.detail.shetuanmingcheng,
-                                inteltype: _this.detail.shetuanleibie,
+								inteltype: _this.detail.shetuanleibie,
 								picture: _this.swiperList[0],
 								refid: _this.detail.id,
 								tablename: 'remenshetuan'
@@ -312,16 +397,16 @@
 				});
 			},
 			// 跨表
-			onAcrossTap(tableName,crossOptAudit,statusColumnName,tips,statusColumnValue){
-				uni.setStorageSync('crossTable','remenshetuan');
+			onAcrossTap(tableName, crossOptAudit, statusColumnName, tips, statusColumnValue) {
+				uni.setStorageSync('crossTable', 'remenshetuan');
 				uni.setStorageSync(`crossObj`, this.detail);
 				uni.setStorageSync(`statusColumnName`, statusColumnName);
 				uni.setStorageSync(`statusColumnValue`, statusColumnValue);
 				uni.setStorageSync(`tips`, tips);
-				if(statusColumnName!=''&&!statusColumnName.startsWith("[")) {
+				if (statusColumnName != '' && !statusColumnName.startsWith("[")) {
 					var obj = uni.getStorageSync('crossObj');
-					for (var o in obj){
-						if(o==statusColumnName && obj[o]==statusColumnValue){
+					for (var o in obj) {
+						if (o == statusColumnName && obj[o] == statusColumnValue) {
 							this.$utils.msg(tips);
 							return
 						}
@@ -330,13 +415,14 @@
 				this.$utils.jump(`../${tableName}/add-or-update?cross=true`);
 			},
 			// 获取详情
-			async init(){
+			async init() {
 				let res = await this.$api.info('remenshetuan', this.id);
 				this.detail = res.data;
 				// 轮播图片
 				this.swiperList = this.detail.tupian ? this.detail.tupian.split(",") : [];
 				//修改富文本的图片样式
-				this.detail.shetuanfengcai = this.detail.shetuanfengcai.replace(/img src/gi,"img style=\"width:100%;\" src");
+				this.detail.shetuanfengcai = this.detail.shetuanfengcai.replace(/img src/gi,
+					"img style=\"width:100%;\" src");
 			},
 
 			// mescroll组件初始化的回调,可获取到mescroll对象
@@ -352,7 +438,7 @@
 
 			/*上拉加载的回调: mescroll携带page的参数, 其中num:当前页 从1开始, size:每页数据条数,默认10 */
 			async upCallback(mescroll) {
-                let res = await this.$api.list('discussremenshetuan', {
+				let res = await this.$api.list('discussremenshetuan', {
 					page: mescroll.num,
 					limit: 10,
 					refid: this.id
@@ -363,21 +449,21 @@
 				if (res.data.list.length == 0) this.hasNext = false;
 				mescroll.endSuccess(mescroll.size, this.hasNext);
 
-            },
+			},
 
 			onChatTap() {
 				this.$utils.jump('../chat/chat')
 			},
 			// 下载
-			download(url){
+			download(url) {
 				let _this = this;
-				url=_this.$base.url +  url;
+				url = _this.$base.url + url;
 				uni.downloadFile({
 					url: url,
 					success: (res) => {
 						if (res.statusCode === 200) {
 							_this.$utils.msg('下载成功');
-							 window.open(url);
+							window.open(url);
 						}
 					}
 				});
@@ -395,18 +481,18 @@
 			},
 			// 完成审核
 			async onFinishTap() {
-				if(!this.detail.sfsh){
+				if (!this.detail.sfsh) {
 					this.$utils.msg('请选择审核状态');
 					return
 				}
-				if(!this.detail.shhf){
+				if (!this.detail.shhf) {
 					this.$utils.msg('请填写审核回复');
 					return
 				}
-				if(this.detail.sfsh=="通过"){
+				if (this.detail.sfsh == "通过") {
 					this.detail.sfsh = '是'
 				}
-				if(this.detail.sfsh=="不通过"){
+				if (this.detail.sfsh == "不通过") {
 					this.detail.sfsh = '否'
 				}
 				await this.$api.update('remenshetuan', this.detail);
@@ -417,7 +503,7 @@
 			onCloseWinTap() {
 				this.$refs.popup.close()
 			},
-			sfshChange(e){
+			sfshChange(e) {
 				console.log(this.detail)
 				this.sfshIndex = e.target.value
 				this.detail.sfsh = this.sfshOptions[this.sfshIndex]
@@ -496,7 +582,7 @@
 		button {
 			margin: 0 0 0 20rpx !important;
 			padding: 0 20rpx;
-			box-shadow: 0 0 12rpx rgba(0,0,0,0);
+			box-shadow: 0 0 12rpx rgba(0, 0, 0, 0);
 		}
 	}
 
@@ -548,32 +634,32 @@
 	}
 
 	.detail-list-item {
-	  padding: 0 24upx;
-	  box-sizing: border-box;
-	  display: flex;
-	  align-items: center;
-	  height: 68upx;
-	  border-bottom: 2upx solid #efefef;
-	  background-color: #fff;
+		padding: 0 24upx;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		height: 68upx;
+		border-bottom: 2upx solid #efefef;
+		background-color: #fff;
 
-	  .lable {
-	    font-size: 28upx;
-	    color: #000;
-	  }
+		.lable {
+			font-size: 28upx;
+			color: #000;
+		}
 
-	  .text {
-	    flex: 1;
-	    font-size: 24upx;
-	    color: #FF00FF;
-	    text-align: left;
-	  }
+		.text {
+			flex: 1;
+			font-size: 24upx;
+			color: #FF00FF;
+			text-align: left;
+		}
 
-	  &.favor {
-	    .el-icon-star-on {
-	      color: inherit;
-	      font-size: inherit;
-	    }
-	  }
+		&.favor {
+			.el-icon-star-on {
+				color: inherit;
+				font-size: inherit;
+			}
+		}
 	}
 
 	.detail-content .shop-title {

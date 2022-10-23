@@ -1,44 +1,58 @@
 <template>
-	<mescroll-uni @init="mescrollInit" :up="upOption" :down="downOption" @down="downCallback" @up="upCallback" :bottom="100">
+	<mescroll-uni @init="mescrollInit" :up="upOption" :down="downOption" @down="downCallback" @up="upCallback"
+		:bottom="100">
 		<view class="container">
-            <view class="detail-content">
-
-
-
-				<view class="detail-list-item" :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-					<view class="lable" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>标题：</view>
-					<view  class="text" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 160rpx)","lineHeight":"auto","fontSize":"28rpx","borderStyle":"solid"}'>{{detail.title}}</view>
+			<view class="detail-content">
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="text">
+						{{detail.title}}
+					</view>
 				</view>
-				<view class="detail-list-item"  :style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}' style="line-height:1">
-      		        <image style="text-align: left" :src="baseUrl+detail.picture"></image>
+				<view class="detail-list-item"
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
+					style="line-height:1">
+					<image class="detail-list-image" style="text-align: left" :src="baseUrl+detail.picture"></image>
 				</view>
 
 			</view>
 
-            <view class="time-content" :style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0 0 10rpx 0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}' style="height:auto !important;">
-				<view class="header" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+			<view class="time-content"
+				:style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
+				style="height:auto !important;">
+				<view class="header"
+					:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"36rpx","borderStyle":"solid"}'>
+					<image class="before-title-icon" src="../../static/add/title-icon.png"></image>
 					简介
 				</view>
-				<view class="content" :style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#fff","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto"}'>
+				<view class="content"
+					:style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#ebeff4","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto","lineHeight":"50upx","letterSpacing": "5upx"}'>
 					{{detail.introduction}}
 				</view>
 			</view>
 
-            <view class="time-content" :style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0 0 10rpx 0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}' style="height:auto !important;">
-				<view class="header" :style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'>
+			<view class="time-content"
+				:style='{"padding":"24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0 0 10rpx 0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
+				style="height:auto !important;">
+				<view class="header"
+					:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#fff","borderRadius":"0","color":"#333","borderWidth":"0","width":"100%","lineHeight":"80rpx","fontSize":"36rpx","borderStyle":"solid"}'>
+					<image class="before-title-icon" src="../../static/add/title-icon.png"></image>
 					内容
 				</view>
-				<view class="content" :style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#fff","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto"}'>
-					<rich-text style="font-size: 33upx;line-height: 50upx;letter-spacing: 5upx;" :nodes="detail.content"></rich-text>
+				<view class="content"
+					:style='{"padding":"24rpx","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"rgba(201, 201, 201, 1)","backgroundColor":"#ebeff4","borderRadius":"8rpx","color":"#333","borderWidth":"2rpx","width":"100%","fontSize":"28rpx","borderStyle":"solid","height":"auto"}'>
+					<rich-text style="font-size: 28rpx;line-height: 50upx;letter-spacing: 5upx;"
+						:nodes="detail.content"></rich-text>
 				</view>
 			</view>
 
 
-			<view class="bottom-content cu-bar bg-white tabbar border shop" :style='{"padding":"0px","boxShadow":"rgb(0 0 0 / 0%) 0px 0px 12rpx","margin":"0px","borderColor":"rgb(204, 204, 204)","backgroundColor":"rgb(255, 255, 255)","borderRadius":"0px","borderWidth":"2rpx 0 0 0","width":"100%","borderStyle":"solid","height":"100rpx"}'>
+			<view class="bottom-content cu-bar bg-white tabbar border shop"
+				:style='{"padding":"0px","boxShadow":"rgb(0 0 0 / 0%) 0px 0px 12rpx","margin":"0px","borderColor":"rgb(204, 204, 204)","backgroundColor":"rgb(255, 255, 255)","borderRadius":"0px","borderWidth":"2rpx 0 0 0","width":"100%","borderStyle":"solid","height":"100rpx"}'>
 				<view style="text-align: left;display: flex;">
 				</view>
 				<view style="text-align: right;">
-                </view>
+				</view>
 			</view>
 		</view>
 
@@ -69,11 +83,19 @@
 	export default {
 		data() {
 			return {
-				autoplaySwiper: {"delay":5000,"disableOnInteraction":false} ? true : false,
-				intervalSwiper: {"delay":5000,"disableOnInteraction":false} ? 5000 : 5000,
-				btnColor: ['#409eff','#67c23a','#909399','#e6a23c','#f56c6c','#356c6c','#351c6c','#f093a9','#a7c23a','#104eff','#10441f','#a21233','#503319'],
+				autoplaySwiper: {
+					"delay": 5000,
+					"disableOnInteraction": false
+				} ? true : false,
+				intervalSwiper: {
+					"delay": 5000,
+					"disableOnInteraction": false
+				} ? 5000 : 5000,
+				btnColor: ['#409eff', '#67c23a', '#909399', '#e6a23c', '#f56c6c', '#356c6c', '#351c6c', '#f093a9',
+					'#a7c23a', '#104eff', '#10441f', '#a21233', '#503319'
+				],
 				id: '',
-                userid: '',
+				userid: '',
 				detail: {},
 				swiperList: [],
 				commentList: [],
@@ -88,7 +110,7 @@
 				hasNext: true,
 				user: {},
 				sfshIndex: -1,
-				sfshOptions: ['通过','不通过'],
+				sfshOptions: ['通过', '不通过'],
 				count: 0,
 				timer: null
 			}
@@ -156,9 +178,9 @@
 		},
 		async onLoad(options) {
 			this.id = options.id;
-            if(options.userid) {
-                this.userid = options.userid;
-            }
+			if (options.userid) {
+				this.userid = options.userid;
+			}
 		},
 		async onShow(options) {
 			// 渲染数据
@@ -167,8 +189,8 @@
 			// 获取用户信息
 			let res = await this.$api.session(table);
 			this.user = res.data;
-			this.btnColor = this.btnColor.sort(()=> {
-				return (0.5-Math.random());
+			this.btnColor = this.btnColor.sort(() => {
+				return (0.5 - Math.random());
 			});
 		},
 		destroyed: function() {
@@ -176,23 +198,23 @@
 		},
 		methods: {
 			// 支付
-			onPayTap(){
-				uni.setStorageSync('paytable','news');
-				uni.setStorageSync('payObject',this.detail);
+			onPayTap() {
+				uni.setStorageSync('paytable', 'news');
+				uni.setStorageSync('payObject', this.detail);
 				this.$utils.jump('../pay-confirm/pay-confirm?type=1')
 			},
 			// 收藏
 			// 跨表
-			onAcrossTap(tableName,crossOptAudit,statusColumnName,tips,statusColumnValue){
-				uni.setStorageSync('crossTable','news');
+			onAcrossTap(tableName, crossOptAudit, statusColumnName, tips, statusColumnValue) {
+				uni.setStorageSync('crossTable', 'news');
 				uni.setStorageSync(`crossObj`, this.detail);
 				uni.setStorageSync(`statusColumnName`, statusColumnName);
 				uni.setStorageSync(`statusColumnValue`, statusColumnValue);
 				uni.setStorageSync(`tips`, tips);
-				if(statusColumnName!=''&&!statusColumnName.startsWith("[")) {
+				if (statusColumnName != '' && !statusColumnName.startsWith("[")) {
 					var obj = uni.getStorageSync('crossObj');
-					for (var o in obj){
-						if(o==statusColumnName && obj[o]==statusColumnValue){
+					for (var o in obj) {
+						if (o == statusColumnName && obj[o] == statusColumnValue) {
 							this.$utils.msg(tips);
 							return
 						}
@@ -201,11 +223,11 @@
 				this.$utils.jump(`../${tableName}/add-or-update?cross=true`);
 			},
 			// 获取详情
-			async init(){
+			async init() {
 				let res = await this.$api.info('news', this.id);
 				this.detail = res.data;
 				//修改富文本的图片样式
-				this.detail.content = this.detail.content.replace(/img src/gi,"img style=\"width:100%;\" src");
+				this.detail.content = this.detail.content.replace(/img src/gi, "img style=\"width:100%;\" src");
 			},
 
 			// mescroll组件初始化的回调,可获取到mescroll对象
@@ -223,21 +245,21 @@
 			async upCallback(mescroll) {
 				mescroll.endSuccess(mescroll.size, this.hasNext);
 
-            },
+			},
 
 			onChatTap() {
 				this.$utils.jump('../chat/chat')
 			},
 			// 下载
-			download(url){
+			download(url) {
 				let _this = this;
-				url=_this.$base.url +  url;
+				url = _this.$base.url + url;
 				uni.downloadFile({
 					url: url,
 					success: (res) => {
 						if (res.statusCode === 200) {
 							_this.$utils.msg('下载成功');
-							 window.open(url);
+							window.open(url);
 						}
 					}
 				});
@@ -255,18 +277,18 @@
 			},
 			// 完成审核
 			async onFinishTap() {
-				if(!this.detail.sfsh){
+				if (!this.detail.sfsh) {
 					this.$utils.msg('请选择审核状态');
 					return
 				}
-				if(!this.detail.shhf){
+				if (!this.detail.shhf) {
 					this.$utils.msg('请填写审核回复');
 					return
 				}
-				if(this.detail.sfsh=="通过"){
+				if (this.detail.sfsh == "通过") {
 					this.detail.sfsh = '是'
 				}
-				if(this.detail.sfsh=="不通过"){
+				if (this.detail.sfsh == "不通过") {
 					this.detail.sfsh = '否'
 				}
 				await this.$api.update('news', this.detail);
@@ -277,7 +299,7 @@
 			onCloseWinTap() {
 				this.$refs.popup.close()
 			},
-			sfshChange(e){
+			sfshChange(e) {
 				console.log(this.detail)
 				this.sfshIndex = e.target.value
 				this.detail.sfsh = this.sfshOptions[this.sfshIndex]
@@ -356,7 +378,7 @@
 		button {
 			margin: 0 0 0 20rpx !important;
 			padding: 0 20rpx;
-			box-shadow: 0 0 12rpx rgba(0,0,0,0);
+			box-shadow: 0 0 12rpx rgba(0, 0, 0, 0);
 		}
 	}
 
@@ -408,32 +430,32 @@
 	}
 
 	.detail-list-item {
-	  padding: 0 24upx;
-	  box-sizing: border-box;
-	  display: flex;
-	  align-items: center;
-	  height: 68upx;
-	  border-bottom: 2upx solid #efefef;
-	  background-color: #fff;
+		padding: 0 24upx;
+		box-sizing: border-box;
+		display: flex;
+		align-items: center;
+		height: 68upx;
+		border-bottom: 2upx solid #efefef;
+		background-color: #fff;
 
-	  .lable {
-	    font-size: 28upx;
-	    color: #000;
-	  }
+		.lable {
+			font-size: 28upx;
+			color: #000;
+		}
 
-	  .text {
-	    flex: 1;
-	    font-size: 24upx;
-	    color: #FF00FF;
-	    text-align: left;
-	  }
+		.text {
+			flex: 1;
+			font-size: 24upx;
+			color: #FF00FF;
+			text-align: left;
+		}
 
-	  &.favor {
-	    .el-icon-star-on {
-	      color: inherit;
-	      font-size: inherit;
-	    }
-	  }
+		&.favor {
+			.el-icon-star-on {
+				color: inherit;
+				font-size: inherit;
+			}
+		}
 	}
 
 	.detail-content .shop-title {
@@ -455,5 +477,32 @@
 		// font-size: 56upx !important;
 		// text-align: right !important;
 		// color: red !important;
+	}
+	
+	.detail-list-image {
+		width: 100%;
+	}
+	
+	.header {
+		display: flex;
+		align-items: center;
+		font-weight: 600;
+	}
+	
+	.before-title-icon {
+		width: 32rpx;
+		height: 32rpx;
+		margin-right: 10rpx;
+	}
+	
+	.detail-list-item .text {
+		margin: 0;
+		padding: 40rpx 10rpx;
+		margin: 0;
+		boxShadow: 0 0 12rpx rgba(0,0,0,0);
+		border-radius: 24rpx;
+		font-size: 36rpx;
+		font-weight: 700;
+		color: #333;
 	}
 </style>

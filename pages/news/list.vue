@@ -1,53 +1,59 @@
 <template>
 	<mescroll-uni @init="mescrollInit" :up="upOption" :down="downOption" @down="downCallback" @up="upCallback">
-		<view class="cu-bar bg-white search" :style="[{top:CustomBar + 'px'}]">
-			<picker v-if="queryList.length>1" mode="selector" :range="queryList" range-key="queryName"
-				:value="queryIndex" @change="queryChange" style="padding-left: 20upx;">
-				<view>
-					<image style="width: 20upx;height: 33upx;" src="../../static/center/to.png"></image>
+		<view class="list-page">
+			<view class="cu-bar bg-white search" :style="[{top:CustomBar + 'px'}]">
+				<picker v-if="queryList.length>1" mode="selector" :range="queryList" range-key="queryName"
+					:value="queryIndex" @change="queryChange" style="padding-left: 20upx;">
+					<view>
+						<image style="width: 20upx;height: 33upx;" src="../../static/center/to.png"></image>
+					</view>
+				</picker>
+			
+				<view v-if="queryIndex==0" class="search-form round">
+					<text class="cuIcon-search"></text>
+					<input v-model="searchForm.title" type="text" placeholder="搜索标题"></input>
 				</view>
-			</picker>
-
-			<view v-if="queryIndex==0" class="search-form round">
-				<text class="cuIcon-search"></text>
-				<input v-model="searchForm.title" type="text" placeholder="标题"></input>
+			
+				<view class="action">
+					<button @tap="search"
+						:style="{width:'auto',borderRadius:'16rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0],borderColor:btnColor[0]}"
+						class="cu-btn shadow-blur round">搜索</button>
+				</view>
 			</view>
-
-			<view class="action">
-				<button @tap="search"
-					:style="{width:'auto',borderRadius:'8rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0],borderColor:btnColor[0]}"
-					class="cu-btn shadow-blur round">搜索</button>
-			</view>
-		</view>
-		<!-- 样式 -->
-		<view :style="2 != 1 ? 'display: flex;' : ''">
-			<view class="news-box3"
-				:style='{"padding":"20rpx 10rpx","boxShadow":"0px 6rpx 12rpx rgba(229, 231, 253, 0.16)","margin":"20rpx 0","borderColor":"red","backgroundColor":"rgba(229, 231, 253,1)","borderRadius":"40rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
-				<view @tap="onDetailTap(product)" v-for="(product,index) in list" :key="index" class="list-item"
-					:style='{"padding":"20rpx","boxShadow":"0px 6rpx 12rpx rgba(0, 0, 0, 0.16)","margin":"20rpx 0","borderColor":"#ccc","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
-					style="display: flex;align-items: center;">
-					<view
-						:style='{"padding":"0","boxShadow":"0px 0 0px rgba(153,153,153,1)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(70, 176, 60, 1)","borderRadius":"50%","borderWidth":"0","width":"16rpx","borderStyle":"solid","height":"16rpx"}'
-						class="dian"></view>
-					<view
-						:style='{"padding":"0 20rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"rgba(0, 0, 0, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 40rpx)","lineHeight":"72rpx","fontSize":"28rpx","borderStyle":"solid"}'
-						class="title hide1">{{product.title}}</view>
-					<view class="cuIcon-right"
-						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"rgba(0, 0, 0, 1)","borderRadius":"0","borderWidth":"0","width":"32rpx","lineHeight":"72rpx","fontSize":"32rpx","borderStyle":"solid"}'>
+			<!-- 样式 -->
+			<view :style="2 != 1 ? 'display: flex;' : ''">
+				<view class="news-box3"
+					:style='{"padding":"20rpx 10rpx","boxShadow":"0px 6rpx 12rpx rgba(229, 231, 253, 0.16)","margin":"30rpx 0","borderColor":"red","backgroundColor":"rgba(229, 231, 253,1)","borderRadius":"40rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
+					<view class="news-title">
+						热点一览
+					</view>
+					<view @tap="onDetailTap(product)" v-for="(product,index) in list" :key="index" class="list-item"
+						:style='{"padding":"20rpx","boxShadow":"0px 6rpx 12rpx rgba(0, 0, 0, 0.16)","margin":"20rpx 0","borderColor":"#ccc","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'
+						style="display: flex;align-items: center;">
+						<view
+							:style='{"padding":"0","boxShadow":"0px 0 0px rgba(153,153,153,1)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(86, 65, 245, 1)","borderRadius":"50%","borderWidth":"0","width":"16rpx","borderStyle":"solid","height":"16rpx"}'
+							class="dian"></view>
+						<view
+							:style='{"padding":"0 20rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"rgba(0, 0, 0, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"calc(100% - 40rpx)","lineHeight":"72rpx","fontSize":"28rpx","borderStyle":"solid"}'
+							class="title hide1">{{product.title}}</view>
+						<view class="cuIcon-right"
+							:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"rgba(86, 65, 245, 1)","borderRadius":"0","borderWidth":"0","width":"32rpx","lineHeight":"72rpx","fontSize":"32rpx","borderStyle":"solid"}'>
+						</view>
 					</view>
 				</view>
+				<!-- 样式4 -->
+				<!-- 样式5 -->
+				<!-- 样式6 -->
 			</view>
-			<!-- 样式4 -->
-			<!-- 样式5 -->
-			<!-- 样式6 -->
+			<button
+				:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0) inset","margin":"0 auto","backgroundColor":"rgba(86, 65, 245, 1)","borderColor":"rgba(86, 65, 245, 1)","borderRadius":"80rpx","color":"#fff","borderWidth":"1","width":"80%","fontSize":"28rpx","borderStyle":"solid","height":"80rpx"}'
+				v-if="userid && isAuth('news','新增')" class="add-btn" @click="onAddTap()">新增</button>
+			<button
+				:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0) inset","margin":"0 auto","backgroundColor":"rgba(86, 65, 245, 1)","borderColor":"rgba(86, 65, 245, 1)","borderRadius":"80rpx","color":"#fff","borderWidth":"1","width":"80%","fontSize":"28rpx","borderStyle":"solid","height":"80rpx"}'
+				v-if="!userid && isAuthFront('news','新增')" class="add-btn" @click="onAddTap()">
+				新增
+			</button>
 		</view>
-		<button
-			:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0) inset","margin":"0 auto","backgroundColor":"rgba(71, 177, 60, 1)","borderColor":"rgba(71, 177, 60, 1)","borderRadius":"80rpx","color":"#fff","borderWidth":"1","width":"80%","fontSize":"28rpx","borderStyle":"solid","height":"80rpx"}'
-			v-if="userid && isAuth('news','新增')" class="add-btn" @click="onAddTap()">新增</button>
-		<button
-			:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0) inset","margin":"0 auto","backgroundColor":"rgba(71, 177, 60, 1)","borderColor":"rgba(71, 177, 60, 1)","borderRadius":"80rpx","color":"#fff","borderWidth":"1","width":"80%","fontSize":"28rpx","borderStyle":"solid","height":"80rpx"}'
-			v-if="!userid && isAuthFront('news','新增')" class="add-btn" @click="onAddTap()">新增</button>
-
 	</mescroll-uni>
 </template>
 
@@ -55,9 +61,7 @@
 	export default {
 		data() {
 			return {
-				btnColor: ['#409eff', '#67c23a', '#909399', '#e6a23c', '#f56c6c', '#356c6c', '#351c6c', '#f093a9',
-					'#a7c23a', '#104eff', '#10441f', '#a21233', '#503319'
-				],
+				btnColor: [' #5741f5'],
 				queryList: [{
 					queryName: "标题",
 				}, ],
@@ -65,9 +69,9 @@
 					"padding": "0 28rpx",
 					"boxShadow": "0 0 0px rgba(0,0,0,.3)",
 					"margin": "12rpx 0",
-					"borderColor": "rgba(64, 174, 54, 1)",
+					"borderColor": "rgba(123, 120, 244, 1)",
 					"backgroundColor": "rgba(255, 255, 255, 1)",
-					"color": "rgba(64, 174, 54, 1)",
+					"color": "rgba(123, 120, 244, 1)",
 					"borderRadius": "0",
 					"borderWidth": "0 0 0 8rpx",
 					"width": "160rpx",
@@ -399,5 +403,18 @@
 		-webkit-line-clamp: 4;
 		line-clamp: 4;
 		-webkit-box-orient: vertical;
+	}
+	
+	.list-page {
+		background-color: #fff;
+		/* padding-bottom: 58rpx; */
+	}
+	
+	.news-box3 .news-title {
+		padding: 0 10rpx 20rpx;
+		border-bottom: 2rpx solid #ccc;
+		color: #5741f5;
+		font-size: 36rpx;
+		font-weight: 700;
 	}
 </style>

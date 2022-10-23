@@ -1,67 +1,127 @@
 <template>
 	<view class="content">
 		<form class="app-update-pv">
-			 
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0.25)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group">
-				<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社团名称</view>
-				<input :style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(71, 177, 60, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}' :disabled="ro.shetuanmingcheng" v-model="ruleForm.shetuanmingcheng" placeholder="社团名称"></input>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社团名称</view>
+				<input
+					:style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(123, 120, 244, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}'
+					:disabled="ro.shetuanmingcheng" v-model="ruleForm.shetuanmingcheng" placeholder="社团名称"></input>
 			</view>
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 0.25)","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group" @tap="tupianTap">
-				<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">图片</view>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"#fff","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group" @tap="tupianTap">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">图片</view>
 				<view class="right-input" style="padding:0">
-					<image :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 auto","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","borderRadius":"100%","borderWidth":"0","width":"88rpx","borderStyle":"solid","height":"88rpx"}' class="avator" v-if="ruleForm.tupian" :src="baseUrl+ruleForm.tupian" mode="aspectFill"></image>
-					<image :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 auto","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","borderRadius":"100%","borderWidth":"0","width":"88rpx","borderStyle":"solid","height":"88rpx"}' class="avator" v-else src="../../static/gen/upload.png" mode="aspectFill"></image>
+					<image
+						:style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 auto","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","borderRadius":"100%","borderWidth":"0","width":"88rpx","borderStyle":"solid","height":"88rpx"}'
+						class="avator" v-if="ruleForm.tupian" :src="baseUrl+ruleForm.tupian" mode="aspectFill"></image>
+					<image
+						:style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 auto","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","borderRadius":"100%","borderWidth":"0","width":"88rpx","borderStyle":"solid","height":"88rpx"}'
+						class="avator" v-else src="../../static/gen/upload.png" mode="aspectFill"></image>
 				</view>
 			</view>
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 0.25)","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group select">
-				<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社团类别</view>
-				<picker @change="shetuanleibieChange" :value="shetuanleibieIndex"  :range="shetuanleibieOptions">
-					<view :style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(71, 177, 60, 1)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"dashed "}' class="uni-input">{{ruleForm.shetuanleibie?ruleForm.shetuanleibie:"请选择社团类别"}}</view>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"#fff","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group select">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社团类别</view>
+				<picker @change="shetuanleibieChange" :value="shetuanleibieIndex" :range="shetuanleibieOptions">
+					<view
+						:style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(123, 120, 244, 1)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"dashed "}'
+						class="uni-input">{{ruleForm.shetuanleibie?ruleForm.shetuanleibie:"请选择社团类别"}}</view>
 				</picker>
 			</view>
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0.25)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group">
-				<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社团人数</view>
-				<input :style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(71, 177, 60, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}' :disabled="ro.shetuanrenshu" v-model="ruleForm.shetuanrenshu" placeholder="社团人数"></input>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社团人数</view>
+				<input
+					:style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(123, 120, 244, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}'
+					:disabled="ro.shetuanrenshu" v-model="ruleForm.shetuanrenshu" placeholder="社团人数"></input>
 			</view>
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 0.25)","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group select">
-				<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">成立时间</view>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"#fff","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group select">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">成立时间</view>
 				<picker mode="date" :value="ruleForm.chenglishijian" @change="chenglishijianChange">
-					<view :style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(71, 177, 60, 1)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"dashed "}' class="uni-input">{{ruleForm.chenglishijian?ruleForm.chenglishijian:"请选择成立时间"}}</view>
+					<view
+						:style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(123, 120, 244, 1)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"dashed "}'
+						class="uni-input">{{ruleForm.chenglishijian?ruleForm.chenglishijian:"请选择成立时间"}}</view>
 				</picker>
 			</view>
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0.25)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group">
-				<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社团地址</view>
-				<input :style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(71, 177, 60, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}' :disabled="ro.shetuandizhi" v-model="ruleForm.shetuandizhi" placeholder="社团地址"></input>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社团地址</view>
+				<input
+					:style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(123, 120, 244, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}'
+					:disabled="ro.shetuandizhi" v-model="ruleForm.shetuandizhi" placeholder="社团地址"></input>
 			</view>
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0.25)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group">
-				<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社长账号</view>
-				<input :style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(71, 177, 60, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}' :disabled="ro.shezhangzhanghao" v-model="ruleForm.shezhangzhanghao" placeholder="社长账号"></input>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社长账号</view>
+				<input
+					:style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(123, 120, 244, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}'
+					:disabled="ro.shezhangzhanghao" v-model="ruleForm.shezhangzhanghao" placeholder="社长账号"></input>
 			</view>
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0.25)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}' class="cu-form-group">
-				<view :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社长姓名</view>
-				<input :style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(71, 177, 60, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}' :disabled="ro.shezhangxingming" v-model="ruleForm.shezhangxingming" placeholder="社长姓名"></input>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#ccc","backgroundColor":"#fff","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"108rpx"}'
+				class="cu-form-group">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社长姓名</view>
+				<input
+					:style='{"padding":"0 30rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","borderColor":"rgba(123, 120, 244, 1)","backgroundColor":"rgba(255, 255, 255, 0)","color":"rgba(161, 161, 161, 1)","textAlign":"left","borderRadius":"40rpx","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"88rpx"}'
+					:disabled="ro.shezhangxingming" v-model="ruleForm.shezhangxingming" placeholder="社长姓名"></input>
 			</view>
-			
 			<!-- 否 -->
- 
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"#fff","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"308rpx"}'
+				class="cu-form-group">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社团宗旨</view>
+				<textarea
+					:style='{"padding":"20rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(123, 120, 244, 1)","borderRadius":"16rpx","color":"rgba(161, 161, 161, 1)","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"280rpx"}'
+					v-model="ruleForm.shetuanzongzhi" placeholder="社团宗旨"></textarea>
+			</view>
 
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 0.25)","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"308rpx"}' class="cu-form-group">
-				<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社团宗旨</view>
-				<textarea :style='{"padding":"20rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(71, 177, 60, 1)","borderRadius":"16rpx","color":"rgba(161, 161, 161, 1)","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"280rpx"}' v-model="ruleForm.shetuanzongzhi" placeholder="社团宗旨"></textarea>
+			<view
+				:style='{"padding":"40rpx 20rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"#fff","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"308rpx"}'
+				class="cu-form-group">
+				<view
+					:style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(94, 143, 247, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","fontSize":"28rpx","borderStyle":"solid"}'
+					class="title">社团风采</view>
+				<textarea
+					:style='{"padding":"20rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(123, 120, 244, 1)","borderRadius":"16rpx","color":"rgba(161, 161, 161, 1)","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"280rpx"}'
+					v-model="ruleForm.shetuanfengcai" placeholder="社团风采"></textarea>
 			</view>
-			
-			<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,.3)","backgroundColor":"rgba(255, 255, 255, 0.25)","borderColor":"#ccc","margin":"0 0 20rpx 0","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"308rpx"}' class="cu-form-group">
-				<view :style='{"padding":"0","boxShadow":"0 0 0px rgba(0,0,0,0)","margin":"0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(161, 161, 161, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"160rpx","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}' class="title">社团风采</view>
-				<textarea :style='{"padding":"20rpx","boxShadow":"0 0 0px rgba(0,0,0,.6) inset","margin":"0","backgroundColor":"rgba(255, 255, 255, 0)","borderColor":"rgba(71, 177, 60, 1)","borderRadius":"16rpx","color":"rgba(161, 161, 161, 1)","borderWidth":"2rpx","width":"calc(100% - 160rpx)","fontSize":"28rpx","borderStyle":"dashed ","height":"280rpx"}' v-model="ruleForm.shetuanfengcai" placeholder="社团风采"></textarea>
-			</view>
-			
-			<view class="btn" >
-				<button :style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0) inset","margin":"0 auto","backgroundColor":"rgba(71, 177, 60, 1)","borderColor":"rgba(71, 177, 60, 1)","borderRadius":"80rpx","color":"#fff","borderWidth":"1","width":"80%","fontSize":"28rpx","borderStyle":"solid","height":"80rpx"}' @tap="onSubmitTap" class="bg-red">提交</button>
+
+			<view class="btn">
+				<button
+					:style='{"padding":"0","boxShadow":"0 0 16rpx rgba(0,0,0,0) inset","margin":"0 auto","backgroundColor":"rgba(123, 120, 244, 1)","borderColor":"rgba(123, 120, 244, 1)","borderRadius":"80rpx","color":"#fff","borderWidth":"1","width":"80%","fontSize":"28rpx","borderStyle":"solid","height":"80rpx"}'
+					@tap="onSubmitTap" class="bg-red">提交</button>
 			</view>
 		</form>
 
-		<w-picker mode="dateTime" step="1" :current="false" :hasSecond="false" @confirm="clicktimeConfirm" ref="clicktime" themeColor="#333333"></w-picker>
-			
+		<w-picker mode="dateTime" step="1" :current="false" :hasSecond="false" @confirm="clicktimeConfirm"
+			ref="clicktime" themeColor="#333333"></w-picker>
 	</view>
 </template>
 
@@ -71,37 +131,37 @@
 	export default {
 		data() {
 			return {
-				cross:'',
+				cross: '',
 				ruleForm: {
-				shetuanmingcheng: '',
-				tupian: '',
-				shetuanleibie: '',
-				shetuanrenshu: '',
-				shetuanzongzhi: '',
-				chenglishijian: '',
-				shetuandizhi: '',
-				shetuanfengcai: '',
-				shezhangzhanghao: '',
-				shezhangxingming: '',
+					shetuanmingcheng: '',
+					tupian: '',
+					shetuanleibie: '',
+					shetuanrenshu: '',
+					shetuanzongzhi: '',
+					chenglishijian: '',
+					shetuandizhi: '',
+					shetuanfengcai: '',
+					shezhangzhanghao: '',
+					shezhangxingming: '',
 				},
 				shetuanleibieOptions: [],
 				shetuanleibieIndex: 0,
 				// 登陆用户信息
 				user: {},
-                                ro:{
-                                   shetuanmingcheng : false,
-                                   tupian : false,
-                                   shetuanleibie : false,
-                                   shetuanrenshu : false,
-                                   shetuanzongzhi : false,
-                                   chenglishijian : false,
-                                   shetuandizhi : false,
-                                   shetuanfengcai : false,
-                                   shezhangzhanghao : false,
-                                   shezhangxingming : false,
-                                   clicktime : false,
-                                   clicknum : false,
-                                },
+				ro: {
+					shetuanmingcheng: false,
+					tupian: false,
+					shetuanleibie: false,
+					shetuanrenshu: false,
+					shetuanzongzhi: false,
+					chenglishijian: false,
+					shetuandizhi: false,
+					shetuanfengcai: false,
+					shezhangzhanghao: false,
+					shezhangxingming: false,
+					clicktime: false,
+					clicknum: false,
+				},
 			}
 		},
 		components: {
@@ -111,34 +171,20 @@
 			baseUrl() {
 				return this.$base.url;
 			},
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 		},
 		async onLoad(options) {
 			let table = uni.getStorageSync("nowTable");
 			// 获取用户信息
 			let res = await this.$api.session(table);
 			this.user = res.data;
-			
+
 			// ss读取
 			this.ruleForm.shezhangzhanghao = this.user.shezhangzhanghao
 			this.ro.shezhangzhanghao = true;
 			this.ruleForm.shezhangxingming = this.user.shezhangxingming
 			this.ro.shezhangxingming = true;
-
-
 			// 下拉框
-			res = await this.$api.option(`shetuanleibie`,`shetuanleibie`,{});
+			res = await this.$api.option(`shetuanleibie`, `shetuanleibie`, {});
 			this.shetuanleibieOptions = res.data;
 
 			// 如果有登陆，获取登陆后保存的userid
@@ -157,68 +203,68 @@
 			}
 			// 跨表
 			this.cross = options.cross;
-			if(options.cross){
+			if (options.cross) {
 				var obj = uni.getStorageSync('crossObj');
-				for (var o in obj){
-					if(o=='shetuanmingcheng'){
-					this.ruleForm.shetuanmingcheng = obj[o];
-					this.ro.shetuanmingcheng = true;
-					continue;
+				for (var o in obj) {
+					if (o == 'shetuanmingcheng') {
+						this.ruleForm.shetuanmingcheng = obj[o];
+						this.ro.shetuanmingcheng = true;
+						continue;
 					}
-					if(o=='tupian'){
-					this.ruleForm.tupian = obj[o];
-					this.ro.tupian = true;
-					continue;
+					if (o == 'tupian') {
+						this.ruleForm.tupian = obj[o];
+						this.ro.tupian = true;
+						continue;
 					}
-					if(o=='shetuanleibie'){
-					this.ruleForm.shetuanleibie = obj[o];
-					this.ro.shetuanleibie = true;
-					continue;
+					if (o == 'shetuanleibie') {
+						this.ruleForm.shetuanleibie = obj[o];
+						this.ro.shetuanleibie = true;
+						continue;
 					}
-					if(o=='shetuanrenshu'){
-					this.ruleForm.shetuanrenshu = obj[o];
-					this.ro.shetuanrenshu = true;
-					continue;
+					if (o == 'shetuanrenshu') {
+						this.ruleForm.shetuanrenshu = obj[o];
+						this.ro.shetuanrenshu = true;
+						continue;
 					}
-					if(o=='shetuanzongzhi'){
-					this.ruleForm.shetuanzongzhi = obj[o];
-					this.ro.shetuanzongzhi = true;
-					continue;
+					if (o == 'shetuanzongzhi') {
+						this.ruleForm.shetuanzongzhi = obj[o];
+						this.ro.shetuanzongzhi = true;
+						continue;
 					}
-					if(o=='chenglishijian'){
-					this.ruleForm.chenglishijian = obj[o];
-					this.ro.chenglishijian = true;
-					continue;
+					if (o == 'chenglishijian') {
+						this.ruleForm.chenglishijian = obj[o];
+						this.ro.chenglishijian = true;
+						continue;
 					}
-					if(o=='shetuandizhi'){
-					this.ruleForm.shetuandizhi = obj[o];
-					this.ro.shetuandizhi = true;
-					continue;
+					if (o == 'shetuandizhi') {
+						this.ruleForm.shetuandizhi = obj[o];
+						this.ro.shetuandizhi = true;
+						continue;
 					}
-					if(o=='shetuanfengcai'){
-					this.ruleForm.shetuanfengcai = obj[o];
-					this.ro.shetuanfengcai = true;
-					continue;
+					if (o == 'shetuanfengcai') {
+						this.ruleForm.shetuanfengcai = obj[o];
+						this.ro.shetuanfengcai = true;
+						continue;
 					}
-					if(o=='shezhangzhanghao'){
-					this.ruleForm.shezhangzhanghao = obj[o];
-					this.ro.shezhangzhanghao = true;
-					continue;
+					if (o == 'shezhangzhanghao') {
+						this.ruleForm.shezhangzhanghao = obj[o];
+						this.ro.shezhangzhanghao = true;
+						continue;
 					}
-					if(o=='shezhangxingming'){
-					this.ruleForm.shezhangxingming = obj[o];
-					this.ro.shezhangxingming = true;
-					continue;
+					if (o == 'shezhangxingming') {
+						this.ruleForm.shezhangxingming = obj[o];
+						this.ro.shezhangxingming = true;
+						continue;
 					}
-					if(o=='clicktime'){
-					this.ruleForm.clicktime = obj[o];
-					this.ro.clicktime = true;
-					continue;
+					if (o == 'clicktime') {
+						this.ruleForm.clicktime = obj[o];
+						this.ro.clicktime = true;
+						continue;
 					}
-					if(o=='clicknum'){
-					this.ruleForm.clicknum = obj[o];
-					this.ro.clicknum = true;
-					continue;
+					if (o == 'clicknum') {
+						this.ruleForm.clicknum = obj[o];
+						this.ro.clicknum = true;
+						continue;
 					}
 				}
 			}
@@ -226,7 +272,7 @@
 		},
 		methods: {
 			styleChange() {
-				this.$nextTick(()=>{
+				this.$nextTick(() => {
 					// document.querySelectorAll('.app-update-pv .cu-form-group .uni-input-input').forEach(el=>{
 					//   el.style.backgroundColor = this.addUpdateForm.input.content.backgroundColor
 					// })
@@ -258,62 +304,37 @@
 				this.$api.upload(function(res) {
 					_this.ruleForm.tupian = 'upload/' + res.file;
 					_this.$forceUpdate();
-					_this.$nextTick(()=>{
+					_this.$nextTick(() => {
 						_this.styleChange()
 					})
 				});
 			},
 
-			getUUID () {
+			getUUID() {
 				return new Date().getTime();
 			},
 			async onSubmitTap() {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//跨表计算判断
-				if(this.ruleForm.shetuanrenshu&&(!this.$validate.isIntNumer(this.ruleForm.shetuanrenshu))){
+				//跨表计算判断
+				if (this.ruleForm.shetuanrenshu && (!this.$validate.isIntNumer(this.ruleForm.shetuanrenshu))) {
 					this.$utils.msg(`社团人数应输入整数`);
 					return
 				}
-				if(this.ruleForm.clicknum&&(!this.$validate.isIntNumer(this.ruleForm.clicknum))){
+				if (this.ruleForm.clicknum && (!this.$validate.isIntNumer(this.ruleForm.clicknum))) {
 					this.$utils.msg(`点击次数应输入整数`);
 					return
 				}
 				//更新跨表属性
-			       var crossuserid;
-			       var crossrefid;
-			       var crossoptnum;
-				if(this.cross){
+				var crossuserid;
+				var crossrefid;
+				var crossoptnum;
+				if (this.cross) {
 					var statusColumnName = uni.getStorageSync('statusColumnName');
 					var statusColumnValue = uni.getStorageSync('statusColumnValue');
-					if(statusColumnName!='') {
+					if (statusColumnName != '') {
 						var obj = uni.getStorageSync('crossObj');
-						if(!statusColumnName.startsWith("[")) {
-							for (var o in obj){
-								if(o==statusColumnName){
+						if (!statusColumnName.startsWith("[")) {
+							for (var o in obj) {
+								if (o == statusColumnName) {
 									obj[o] = statusColumnValue;
 								}
 
@@ -321,40 +342,40 @@
 							var table = uni.getStorageSync('crossTable');
 							await this.$api.update(`${table}`, obj);
 						} else {
-						       crossuserid=Number(uni.getStorageSync('userid'));
-						       crossrefid=obj['id'];
-						       crossoptnum=uni.getStorageSync('statusColumnName');
-						       crossoptnum=crossoptnum.replace(/\[/,"").replace(/\]/,"");
+							crossuserid = Number(uni.getStorageSync('userid'));
+							crossrefid = obj['id'];
+							crossoptnum = uni.getStorageSync('statusColumnName');
+							crossoptnum = crossoptnum.replace(/\[/, "").replace(/\]/, "");
 						}
 					}
 				}
-				if(crossrefid && crossuserid) {
-					this.ruleForm.crossuserid=crossuserid;
-					this.ruleForm.crossrefid=crossrefid;
+				if (crossrefid && crossuserid) {
+					this.ruleForm.crossuserid = crossuserid;
+					this.ruleForm.crossrefid = crossrefid;
 					let params = {
 						page: 1,
-						limit:10,
-						crossuserid:crossuserid,
-						crossrefid:crossrefid,
+						limit: 10,
+						crossuserid: crossuserid,
+						crossrefid: crossrefid,
 					}
 					let res = await this.$api.list(`remenshetuan`, params);
 					if (res.data.total >= crossoptnum) {
 						this.$utils.msg(uni.getStorageSync('tips'));
 						return false;
 					} else {
-                //跨表计算
-						if(this.ruleForm.id){
+						//跨表计算
+						if (this.ruleForm.id) {
 							await this.$api.update(`remenshetuan`, this.ruleForm);
-						}else{
+						} else {
 							await this.$api.add(`remenshetuan`, this.ruleForm);
 						}
 						this.$utils.msgBack('提交成功');
 					}
 				} else {
-                //跨表计算
-					if(this.ruleForm.id){
+					//跨表计算
+					if (this.ruleForm.id) {
 						await this.$api.update(`remenshetuan`, this.ruleForm);
-					}else{
+					} else {
 						await this.$api.add(`remenshetuan`, this.ruleForm);
 					}
 					this.$utils.msgBack('提交成功');
@@ -388,10 +409,15 @@
 </script>
 
 <style lang="scss" scoped>
+	page {
+		padding: 20rpx;
+		background-color: #e5e7fd;
+	}
+
 	.container {
 		padding: 20upx;
 	}
-	
+
 	.content:after {
 		position: fixed;
 		top: 0;
@@ -424,51 +450,56 @@
 		text-align: left;
 		padding: 0 24upx;
 	}
-	
+
 	.cu-form-group.active {
 		justify-content: space-between;
 	}
-	
+
 	.btn {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  flex-wrap: wrap;
-	  padding: 20upx 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-wrap: wrap;
+		padding: 20upx 0;
 	}
-	
+
 	.cu-form-group {
 		padding: 0 24upx;
 		background-color: transparent;
 		min-height: inherit;
 	}
-	
+
 	.cu-form-group+.cu-form-group {
 		border: 0;
 	}
-	
+
 	.cu-form-group uni-input {
 		padding: 0 30upx;
 	}
-	
+
 	.uni-input {
 		padding: 0 30upx;
 	}
-	
+
 	.cu-form-group uni-textarea {
 		padding: 30upx;
 		margin: 0;
 	}
-	
+
 	.cu-form-group uni-picker::after {
 		line-height: 80rpx;
 	}
-	
+
 	.select .uni-input {
 		line-height: 80rpx;
 	}
-	
+
 	.input .right-input {
 		line-height: 88rpx;
+	}
+
+	.cu-form-group {
+		display: flex;
+		align-items: center;
 	}
 </style>

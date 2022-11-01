@@ -48,7 +48,7 @@
 						<view
 							:style='{"padding":"10rpx 20rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"36rpx","fontSize":"28rpx","borderStyle":"solid"}'
 							class="title">{{product.huodongbiaoti}}</view>
-						<view style="display: flex;justify-content: space-between;">
+						<view style="display: flex;justify-content: space-between;margin: 0 20rpx;">
 							<text v-if="userid && isAuth('shetuanhuodong','修改')" class="cuIcon-edit"
 								@click.stop="onUpdateTap(product.id)">修改</text>
 							<text v-if="!userid && isAuthFront('shetuanhuodong','修改')" class="cuIcon-edit"
@@ -68,7 +68,7 @@
 						<view
 							:style='{"padding":"10rpx 20rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"36rpx","fontSize":"28rpx","borderStyle":"solid"}'
 							class="title">{{product.huodongbiaoti}}</view>
-						<view style="display: flex;justify-content: space-between;">
+						<view style="display: flex;justify-content: space-between;margin: 0 20rpx;">
 							<text v-if="userid && isAuth('shetuanhuodong','修改')" class="cuIcon-edit"
 								@click.stop="onUpdateTap(product.id)">修改</text>
 							<text v-if="!userid && isAuthFront('shetuanhuodong','修改')" class="cuIcon-edit"
@@ -88,7 +88,7 @@
 						<view
 							:style='{"padding":"10rpx 20rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"36rpx","fontSize":"28rpx","borderStyle":"solid"}'
 							class="title">{{product.huodongbiaoti}}</view>
-						<view style="display: flex;justify-content: space-between;">
+						<view style="display: flex;justify-content: space-between;margin: 0 20rpx;">
 							<text v-if="userid && isAuth('shetuanhuodong','修改')" class="cuIcon-edit"
 								@click.stop="onUpdateTap(product.id)">修改</text>
 							<text v-if="!userid && isAuthFront('shetuanhuodong','修改')" class="cuIcon-edit"
@@ -108,7 +108,7 @@
 						<view
 							:style='{"padding":"10rpx 20rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"36rpx","fontSize":"28rpx","borderStyle":"solid"}'
 							class="title">{{product.huodongbiaoti}}</view>
-						<view style="display: flex;justify-content: space-between;">
+						<view style="display: flex;justify-content: space-between;margin: 0 20rpx;">
 							<text v-if="userid && isAuth('shetuanhuodong','修改')" class="cuIcon-edit"
 								@click.stop="onUpdateTap(product.id)">修改</text>
 							<text v-if="!userid && isAuthFront('shetuanhuodong','修改')" class="cuIcon-edit"
@@ -131,7 +131,7 @@
 								:style='{"padding":"020rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"36rpx","fontSize":"28rpx","borderStyle":"solid"}'
 								class="title">{{product.huodongbiaoti}}</view>
 						</view>
-						<view style="display: flex;justify-content: space-between;">
+						<view style="display: flex;justify-content: space-between;margin: 0 20rpx;">
 							<text v-if="userid && isAuth('shetuanhuodong','修改')" class="cuIcon-edit"
 								@click.stop="onUpdateTap(product.id)">修改</text>
 							<text v-if="!userid && isAuthFront('shetuanhuodong','修改')" class="cuIcon-edit"
@@ -154,7 +154,7 @@
 								:style='{"padding":"20rpx","boxShadow":"0 0 12rpx rgba(255,0,0,0)","margin":"0","borderColor":"red","backgroundColor":"rgba(255,0,0,0)","color":"#333","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"36rpx","fontSize":"28rpx","borderStyle":"solid"}'
 								class="title">{{product.huodongbiaoti}}</view>
 						</view>
-						<view style="display: flex;justify-content: space-between;">
+						<view style="display: flex;justify-content: space-between;margin: 0 20rpx;">
 							<text v-if="userid && isAuth('shetuanhuodong','修改')" class="cuIcon-edit"
 								@click.stop="onUpdateTap(product.id)">修改</text>
 							<text v-if="!userid && isAuthFront('shetuanhuodong','修改')" class="cuIcon-edit"
@@ -547,5 +547,17 @@
 		-webkit-line-clamp: 4;
 		line-clamp: 4;
 		-webkit-box-orient: vertical;
+	}
+	
+	.title {
+		font-weight: 700;
+	}
+	
+	.cuIcon-edit {
+		color: #57b46f;
+	}
+	
+	.cuIcon-delete {
+		color: #e93a2a;
 	}
 </style>

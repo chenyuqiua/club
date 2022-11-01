@@ -25,7 +25,7 @@
 					:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"20rpx 3%","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"0","borderWidth":"0","width":"94%","borderStyle":"solid","height":"300rpx"}'
 					class="swiper" :indicator-dots='".swiper-pagination"==null?false:true' :autoplay='autoplaySwiper'
 					:circular='true' indicator-active-color='#5741f5' indicator-color='rgba(0, 0, 0, .3)'
-					:duration='2000' :interval='intervalSwiper' :vertical='"horizontal"=="horizontal"?false:true'>
+					:duration='400' :interval='intervalSwiper' :vertical='"horizontal"=="horizontal"?false:true'>
 					<swiper-item
 						:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"300rpx"}'
 						v-for="(swiper,index) in swiperList" :key="index" @tap="onSwiperTap(swiper)">

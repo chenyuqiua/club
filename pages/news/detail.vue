@@ -1,6 +1,6 @@
 <template>
 	<mescroll-uni @init="mescrollInit" :up="upOption" :down="downOption" @down="downCallback" @up="upCallback"
-		:bottom="100">
+		:bottom="0">
 		<view class="container">
 			<view class="detail-content">
 				<view class="detail-list-item"
@@ -48,7 +48,7 @@
 
 
 			<view class="bottom-content cu-bar bg-white tabbar border shop"
-				:style='{"padding":"0px","boxShadow":"rgb(0 0 0 / 0%) 0px 0px 12rpx","margin":"0px","borderColor":"rgb(204, 204, 204)","backgroundColor":"rgb(255, 255, 255)","borderRadius":"0px","borderWidth":"2rpx 0 0 0","width":"100%","borderStyle":"solid","height":"100rpx"}'>
+				:style='{"display":"none","padding":"0px","boxShadow":"rgb(0 0 0 / 0%) 0px 0px 12rpx","margin":"0px","borderColor":"rgb(204, 204, 204)","backgroundColor":"rgb(255, 255, 255)","borderRadius":"0px","borderWidth":"2rpx 0 0 0","width":"100%","borderStyle":"solid","height":"100rpx"}'>
 				<view style="text-align: left;display: flex;">
 				</view>
 				<view style="text-align: right;">

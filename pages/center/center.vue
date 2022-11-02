@@ -2,7 +2,7 @@
 	<view class="content">
 		<!-- user -->
 		<view @tap="onPageTap('../user-info/user-info')" class="header" v-bind:class="{'status':isH5Plus}"
-			:style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(86, 65, 245, 0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"260rpx"}'>
+			:style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#7d79f4","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"260rpx"}'>
 			<view
 				:style='{"padding":"0 24rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"20rpx 0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(0, 0, 0, 0)","borderRadius":"16rpx","borderWidth":"0","width":"calc(100% - 112rpx)","borderStyle":"solid","height":"160rpx"}'
 				v-if="tableName=='xuesheng'" class="userinfo">
@@ -157,7 +157,7 @@
 		left: 0;
 		bottom: 0;
 		content: '';
-		background-image: url(http://codegen.caihongy.cn/20220212/610efe89987a43b997db9cc2a8ed4a67.png);
+		//background-image: url(http://codegen.caihongy.cn/20220212/610efe89987a43b997db9cc2a8ed4a67.png);
 		background-attachment: fixed;
 		background-size: cover;
 		background-position: center;
@@ -351,7 +351,7 @@
 
 	.cover-list {
 		padding: 24rpx;
-		margin: 30rpx 0;
+		margin: 0rpx 0;
 		background-color: #e5e7fd;
 	}
 </style>

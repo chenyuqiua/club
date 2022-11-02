@@ -5,7 +5,7 @@
 			<swiper
 				:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"20rpx 3%","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"0","borderWidth":"0","width":"94%","borderStyle":"solid","height":"300rpx"}'
 				class="swiper" :indicator-dots='".swiper-pagination"==null?false:true' :autoplay='autoplaySwiper'
-				:circular='true' indicator-active-color='rgba(173, 219, 140, 1)' indicator-color='rgba(0, 0, 0, .3)'
+				:circular='true' indicator-active-color='#5741f5' indicator-color='rgba(0, 0, 0, .3)'
 				:duration='1000' :interval='intervalSwiper' :vertical='"horizontal"=="horizontal"?false:true'>
 				<swiper-item
 					:style='{"padding":"0","boxShadow":"0 2rpx 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(255,255,255,1)","borderRadius":"20rpx","borderWidth":"0","width":"100%","borderStyle":"solid","height":"300rpx"}'
@@ -20,16 +20,16 @@
 				<view class="price detail-list-item"
 					:style='{"padding":"0 24rpx","boxShadow":"0 0 6rpx rgba(0,0,0,.3)","margin":"0","borderColor":"#fff","backgroundColor":"#fff","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 					<view class="text icon"
-						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0 0 0 -40rpx","borderColor":"rgba(0,0,0,0)","backgroundColor":"rgba(165, 0, 0, 1)","color":"rgba(255, 255, 255, 1)","textAlign":"center","borderRadius":"40rpx 0 0 40rpx","borderWidth":"0","width":"20%","lineHeight":"50rpx","fontSize":"32rpx","borderStyle":"solid"}'>
-						<view style="line-height: 1;" v-if="storeupFlag==1" class="cuIcon-favorfill" @click="shoucang">
+						:style='{"padding":"0","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(0,0,0,0)","backgroundColor":"#5741f5","color":"rgba(255, 255, 255, 1)","textAlign":"center","borderRadius":"40rpx","borderWidth":"0","width":"20%","height":"68rpx","lineHeight":"68rpx","fontSize":"32rpx","borderStyle":"solid"}'>
+						<view v-if="storeupFlag==1" class="cuIcon-favorfill" @click="shoucang">
 						</view>
-						<view style="line-height: 1;" v-if="storeupFlag==0" class="cuIcon-favor" @click="shoucang">
+						<view v-if="storeupFlag==0" class="cuIcon-favor" @click="shoucang">
 						</view>
 					</view>
 				</view>
 
 				<view class="name shop-title"
-					:style='{"padding":"0 24rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"0 0 20rpx 0","borderColor":"#fff","backgroundColor":"#fff","color":"#000","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"60rpx","fontSize":"36rpx","borderStyle":"solid"}'>
+					:style='{"padding":"0 24rpx","boxShadow":"0 0 0px rgba(0,0,0,.3)","margin":"20rpx 0 20rpx 0","borderColor":"#fff","backgroundColor":"#fff","color":"#000","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"60rpx","fontSize":"36rpx","borderStyle":"solid"}'>
 					社团名称：{{detail.shetuanmingcheng}}
 				</view>
 
@@ -135,7 +135,7 @@
 						评论
 					</view>
 					<view
-						:style='{"padding":"0 10rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","borderColor":"rgba(64, 174, 54, 1)","backgroundColor":"rgba(173, 219, 140, 1)","color":"#333","isBtn":true,"borderRadius":"10rpx","borderWidth":"2rpx","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"dashed "}'
+						:style='{"padding":"0 10rpx","boxShadow":"0 0 12rpx rgba(0,0,0,0)","margin":"0","backgroundColor":"#5741f5","color":"#fff","isBtn":true,"borderRadius":"10rpx","borderWidth":"2rpx","width":"auto","lineHeight":"80rpx","fontSize":"28rpx","borderStyle":"solid"}'
 						@click="onCommentTap" class="btn-comment-content" style="display: flex;align-items: center;">
 						<view class="cuIcon-add"></view>添加评论
 					</view>
@@ -175,10 +175,10 @@
 				</view>
 				<view style="text-align: right;">
 					<button v-if="userid&&isAuth('remenshetuan','申请加入')" @tap="onAcrossTap('shetuanjiaru','','','')"
-						class="cu-btn bg-brown round shadow-blur" style="margin-right: 10upx;min-width: 180upx;"
+						class="cu-btn btn-color round shadow-blur" style="margin-right: 10upx;min-width: 180upx;"
 						:style="{width:'auto',borderRadius:'8rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0+6],borderColor:btnColor[0+6]}">申请加入</button>
 					<button v-if="!userid&&isAuthFront('remenshetuan','申请加入')"
-						@tap="onAcrossTap('shetuanjiaru','','','')" class="cu-btn bg-brown round shadow-blur"
+						@tap="onAcrossTap('shetuanjiaru','','','')" class="cu-btn btn-color round shadow-blur"
 						style="margin-right: 10upx;min-width: 180upx;"
 						:style="{width:'auto',borderRadius:'8rpx',height:'80rpx',fontSize:'28rpx',color:'#fff',backgroundColor:btnColor[0+6],borderColor:btnColor[0+6]}">申请加入</button>
 				</view>
@@ -667,6 +667,9 @@
 		box-sizing: border-box;
 		line-height: 1.4;
 	}
+  .btn-color{
+    background-color: #5741f5;
+  }
 
 	.priceFavor {
 		// height: 96upx !important;

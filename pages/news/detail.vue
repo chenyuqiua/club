@@ -505,4 +505,7 @@
 		font-weight: 700;
 		color: #333;
 	}
+  /deep/ .mescroll-upwarp{
+    display: none !important;
+  }
 </style>

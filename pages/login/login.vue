@@ -206,7 +206,7 @@
 		left: 0;
 		bottom: 0;
 		content: '';
-		background-image: url(http://codegen.caihongy.cn/20220214/c79a7a64343c4d07a6b38deec4bbbf2c.png);
+		//background-image: url(http://codegen.caihongy.cn/20220214/c79a7a64343c4d07a6b38deec4bbbf2c.png);
 		background-attachment: fixed;
 		background-size: cover;
 		background-position: center;

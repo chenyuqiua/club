@@ -6,7 +6,7 @@
 				:style='{"padding":"0","boxShadow":"0 0px 0px rgba(0,0,0,0)","margin":"0 0 16rpx","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"0","borderWidth":"0","width":"100%","borderStyle":"solid","height":"auto"}'>
 				<image
 					:style='{"padding":"0","boxShadow":"0 0 0px #59f43e","margin":"0 auto 40rpx","borderColor":"#ccc","borderRadius":"40rpx","borderWidth":"0","width":"160rpx","borderStyle":"solid","url":"http://codegen.caihongy.cn/20220211/5d658f9d5a3949b4ad49aed902c58cfa.jfif","isShow":true,"height":"160rpx"}'
-					src='http://codegen.caihongy.cn/20220211/5d658f9d5a3949b4ad49aed902c58cfa.jfif' mode="aspectFill">
+					src='../../assets/icon.jpg' mode="aspectFill">
 				</image>
 			</view>
 			<view class="uni-form-item uni-column"
